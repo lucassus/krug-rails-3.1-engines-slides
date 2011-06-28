@@ -1,3 +1,3 @@
-!SLIDE 
-# how_to_use_it #
+!SLIDE title
+# Jak użyć naszego engine? #
 
