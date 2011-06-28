@@ -1,8 +1,8 @@
 !SLIDE bullets incremental
 # Engines w Rails 3.1
 
-* engine jest teraz aplikacją rack
-* :isolate_namespace - engine mogą być izolowane
+* engines są teraz aplikacją rack
+* :isolate_namespace - engines mogą być izolowane
 * posiadają własne routes
 * mogą posiadać własne pluginy
-* może serwować js i css
+* mogą serwować js i css

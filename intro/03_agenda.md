@@ -1,6 +1,7 @@
 !SLIDE bullets incremental
-# Agenda
+# O czym bedzie prezentacja? #
 
+* Odpowiemy sobie na następujące pytania:
 * Czym jest Rails engine?
-* Jak zbudować engine?
+* Jak zbudować i testować engine?
 * Jak użyć engine?

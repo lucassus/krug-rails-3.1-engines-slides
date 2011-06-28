@@ -1,16 +1,16 @@
-!SLIDE bullets
+!SLIDE bullets incremental
 # Struktura katalogów #
 
 * krug_forum.gemspec - pozwala na użycie engine jako gema
 * Gemfile - zostanie skonfigurowany tak by używac gemspeca
 * config/routes.rb - routes enginu
-* script/rails - server, generatory ipt.
+* script/rails - serwer, generatory ipt.
 
 !SLIDE bullets
 # Struktura katalogu app/ #
 
 * tak jak w standardowej aplikacji rails
-* kontrolery, widoki, modele, helpery itp.
+* mamy kontrolery, widoki, modele, helpery itp.
 * ..ale są przestrzenie nazw
 
 !SLIDE bullets
@@ -18,7 +18,7 @@
 
 * definiuje moduł KrugForum
 * można tutaj umieszczać helpery
-* ..np. konfiguracja engine
+* ..np. konfiguracja engine itp.
 
 !SLIDE bullets
 # Plik lib/krug_forum/engine.rb #
@@ -34,3 +34,4 @@
 * mini aplikacja Rails
 * w zależnościach ma nasz engine
 * używana do uruchamiania testów
+* ..lub po prostu aplikacji `rails server`

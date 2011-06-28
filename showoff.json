@@ -5,6 +5,7 @@
     {"section": "intro"},
     {"section": "what_is_an_engine"},
     {"section": "how_to_build_it"},
-    {"section": "how_to_use_it"}
+    {"section": "how_to_use_it"},
+    {"section": "outro"}
   ]
 }

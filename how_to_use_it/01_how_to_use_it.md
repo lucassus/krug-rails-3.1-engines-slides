@@ -26,18 +26,27 @@
       mount KrugForum::Engine => "/forum"
     end
 
-!SLIDE
+!SLIDE bullets incremental
 # Migracje #
 
-## Skopiowanie migracji do katalogu aplikacji
-
-    @@@ sh
-    rake my_forum:install:migrations
-
-## ..i oczywiście ich uruchomienie
-
-    @@@ sh
-    rake db:migrate
+* Skopiowanie migracji do katalogu aplikacji
+* `rake my_forum:install:migrations`
+* ..i oczywiście ich uruchomienie
+* `rake db:migrate`
 
 !SLIDE title
-# Pytania? #
+# Jak używać helperów do routes #
+
+!SLIDE
+# Hepery do routes #
+
+## W aplikacji używającej engine
+
+    @@@ html
+    <%= link_to 'Forum', krug_forum.root_path %>
+
+## W engine
+
+    @@@ html
+    <%= link_to 'Home', main_app.root_path %>
+

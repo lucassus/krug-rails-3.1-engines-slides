@@ -1,9 +1,9 @@
-!SLIDE title
+!SLIDE title small
 # O mnie #
 
 ## Łukasz Bandzarewicz
 ## Lunar Logic Polska
 ### lukasz.bandzarewicz@gmail.com
-### github.com/lucassus
+### http://github.com/lucassus
 ### @lucassus
 ### http://blog.bandzarewicz.com

@@ -1,11 +1,15 @@
-!SLIDE small incremental
+!SLIDE title subsection
 # Jak zbudować Rails 3.1 engine? #
 
-## Instalacja Rails 3.1
+!SLIDE
+# Instalacja Rails 3.1 #
 
+    @@@ sh
     gem isntall rails --pre
 
-## Generowanie projektu
+!SLIDE
+# Wygenerowanie projektu #
 
+    @@@ sh
     rails plugin new krug_forum --mountable
 

@@ -1,4 +1,4 @@
-!SLIDE bullets incremental
+!SLIDE bullets incremental smaller
 # Tipsy i triki #
 
 * Jak zamienić TestUnit na RSpec?
@@ -6,5 +6,5 @@
 * Jak wygenerować prosty scaffold?
 * Jak sprawić by dało się testować routes?
 * Jak dodawać zależności?
-* Jak dodać użytkowników?
+* ..np. jakiś gem lub autentykację użytkowników
 * Jak sprawić by engine serwował pliki js i css?
