@@ -1,4 +1,4 @@
-!SLIDE bullets incremental smaller
+!SLIDE smbullets incremental small
 # Tipsy i triki #
 
 * Jak zamienić __TestUnit__ na __RSpec__?
@@ -8,3 +8,4 @@
 * Jak dodawać __zależności__ (gemy)?
 * ..np. jakiś gem lub autentykację użytkowników
 * Jak sprawić by engine serwował pliki js i css?
+* Jak sprawić by engine korzystał z __layout__ applikacji?

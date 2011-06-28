@@ -186,7 +186,7 @@
 <li>..lub po prostu aplikacji <code>rails server</code></li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental smaller" ref="how_to_build_it/03_tips_and_tricks">
+</div><div class="slide" data-transition="none"><div class="content smbullets incremental small" ref="how_to_build_it/03_tips_and_tricks">
 <h1>Tipsy i triki</h1>
 
 <ul>
@@ -197,6 +197,7 @@
 <li>Jak dodawa&#x107; <strong>zale&#x17C;no&#x15B;ci</strong> (gemy)?</li>
 <li>..np. jaki&#x15B; gem lub autentykacj&#x119; u&#x17C;ytkownik&#xF3;w</li>
 <li>Jak sprawi&#x107; by engine serwowa&#x142; pliki js i css?</li>
+<li>Jak sprawi&#x107; by engine korzysta&#x142; z <strong>layout</strong> applikacji?</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/04_rspec/1">
@@ -522,6 +523,62 @@ end</code></pre></div>
 <h2>spec/dummy/assets/javascript/application.js</h2>
 
 <pre class="sh_javascript"><code>//= require krug_forum</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/09_layouts/1">
+<h1>Layouty i widoki</h1></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/09_layouts/2">
+<h1>Konfigurowalny layout</h1>
+
+<h2>lib/krug_forum.rb</h2>
+
+<pre class="sh_ruby"><code># ...
+DEFAULT_LAYOUT = 'krug_forum/application'
+
+def self.layout(layout = nil)
+  @layout = layout if layout
+  @layout || DEFAULT_LAYOUT
+end
+# ...</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/09_layouts/3">
+<h2>app/controllers/krug<em>forum/application</em>controller.rb</h2>
+
+<pre class="sh_ruby"><code>module KrugForum
+  class ApplicationController &lt; ActionController::Base
+    layout KrugForum.layout
+
+    # ...
+  end
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/09_layouts/4">
+<h1>W g&#x142;&#xF3;wnej aplikacji</h1>
+
+<h2>config/initializers/krug_forum.rb</h2>
+
+<pre class="sh_ruby"><code>KrugForum.layout 'application'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/09_layouts/5">
+<h1>Uwaga!</h1>
+
+<h2><code>main_app</code></h2>
+
+<h2><code>krug_forum</code></h2>
+
+<pre class="sh_html"><code>&lt;body&gt;
+
+  &lt;div id="menu"&gt;
+    &lt;%= link_to 'Application root', main_app.root_path %&gt; |
+    &lt;%= link_to 'Engine root', krug_forum.root_path %&gt; |
+
+    &lt;% if user_signed_in? %&gt;
+      Email: &lt;%= current_user.email %&gt; |
+      &lt;%= link_to 'Logout', destroy_user_session_path %&gt;
+    &lt;% else %&gt;
+      &lt;%= link_to 'Login', main_app.new_user_session_path %&gt; |
+      &lt;%= link_to 'Register', main_app.new_user_registration_path %&gt;
+    &lt;% end %&gt;
+  &lt;/div&gt;
+
+  &lt;%= yield %&gt;
+
+&lt;/body&gt;</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_use_it/01_how_to_use_it/1">
 <h1>Jak u&#x17C;y&#x107; naszego engine?</h1></div>
 </div><div class="slide" data-transition="none"><div class="content small" ref="how_to_use_it/01_how_to_use_it/2">
