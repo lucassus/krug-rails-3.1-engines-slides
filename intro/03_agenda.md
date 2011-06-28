@@ -1,5 +1,5 @@
 !SLIDE bullets incremental
-# O czym bedzie prezentacja? #
+# O czym będzie prezentacja? #
 
 * Odpowiemy sobie na następujące pytania:
 * Czym jest Rails engine?

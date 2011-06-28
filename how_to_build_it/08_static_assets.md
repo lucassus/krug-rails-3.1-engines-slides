@@ -5,8 +5,8 @@
 !SLIDE bullets incremental
 # Instalacja zależności #
 
-* dodać `s.add_dependency 'jquery-rails'` do gemspec
-* ..i nie zapomnieć o `require 'jquery-rails'` w lib/krug_forum/engine.rb
+* dodać `s.add_dependency 'jquery-rails'` do __krug_forum.gemspec__
+* ..i nie zapomnieć o `require 'jquery-rails'` w __lib/krug_forum/engine.rb__
 
 !SLIDE
 # Podpięcie assets w aplikacji #

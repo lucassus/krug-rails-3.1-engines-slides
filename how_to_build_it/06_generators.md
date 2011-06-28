@@ -10,10 +10,12 @@
         isolate_namespace KrugForum
 
         config.generators do |g|
-          g.javascripts false
-          g.stylesheets false
-          g.helper false
-          g.integration_tool false
+          g.javascripts false # nie generuje plików js
+          g.stylesheets false # nie generuje plików css
+          g.helper false # nie generuje helperów
+          g.integration_tool false # nie generuje testów integracyjnych
+
+          # RSpec + factory_girl
           g.test_framework :rspec, :fixture => false
           g.fixture_replacement :factory_girl, 
             :dir => "spec/support/factories"
@@ -54,13 +56,32 @@
           invoke    css
           invoke  css
 
+!SLIDE small
+# Wygenerowana migracja #
+
+    @@@ ruby
+    class CreateKrugForumPosts < ActiveRecord::Migration
+      def self.up
+        create_table :krug_forum_posts do |t|
+          t.string :subject
+          t.text :body
+
+          t.timestamps
+        end
+      end
+
+      def self.down
+        remove_table :krug_forum_posts
+      end
+    end
+
 !SLIDE bullets incremental
 # Poprawki po scaffold #
 
-* specs nie zostały wygenerowane w odpowiednich modułach
-* klasy modeli nie są w odpowiednich przestrzeniach nazw
-* tj. zamienić np. `Post` na `KrugForum::Post`
-* nie działają testy do kontrolerów i routes
+* Specs nie zostały wygenerowane w odpowiednich modułach
+* Klasy modeli nie są w odpowiednich przestrzeniach nazw
+* ...tj. zamienić np. `Post` na `KrugForum::Post`
+* Nie działają testy do kontrolerów i routes
 
 !SLIDE small
 # Testowanie routes #
@@ -68,9 +89,12 @@
 ## spec/spec_helper.rb
 
     @@@ ruby
+    # ...
     RSpec.configure do |config|
       config.include(KrugForum::Engine.routes.mounted_helpers)
       config.include(KrugForum::Engine.routes.url_helpers)
+
+      # ...
     end
 
 ## spec/dummy/config/routes.rb

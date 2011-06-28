@@ -8,6 +8,8 @@
 
     @@@ ruby
     Gem::Specification.new do |s|
+      # ...
+
       s.add_development_dependency "rspec"
       s.add_development_dependency "rspec-rails"
     end
@@ -29,6 +31,6 @@
     @@@ sh
     rails g rspec:install
 
-## Przenieść test/dummy do spec/dumm
-## Usunąć katalog test
+## Przenieść __test/dummy__ do __spec/dummy__
+## Usunąć katalog __test__
 

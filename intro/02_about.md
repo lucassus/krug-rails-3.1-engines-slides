@@ -1,5 +1,5 @@
 !SLIDE title small
-# O mnie #
+# Kim jestem? #
 
 ## Łukasz Bandzarewicz
 ## Lunar Logic Polska

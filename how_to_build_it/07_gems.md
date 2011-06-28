@@ -30,6 +30,8 @@
     module KrugForum
       class Engine < Rails::Engine
         isolate_namespace KrugForum
+
+        # ...
       end
     end
 
@@ -42,20 +44,23 @@
 # Dodawanie użytkowników #
 
 * do __Gemfile__ dodać `gem 'devise'`
-* zainstalować devise, w katalogu __spec/dummy__:
+* w __spec/dummy__ zainstalować devise:
 * `rails generate devise:install`
 * `rails generate devise User`
-* migracja w __spec/dummy/db/migrate__
+* powstanie migracja w __spec/dummy/db/migrate__
 
-!SLIDE
+!SLIDE small
 # Rozszerzenie modelu #
 
     @@@ ruby
     # oczywiście najpierw musi zostać
     # stworzona migracja
+    # add_column :krug_forum_posts, :user_id, :integer
     module KrugForum
       class Post < ActiveRecord::Base
         belongs_to :user
+
+        # ...
       end
     end
 
@@ -114,5 +119,7 @@
     @@@ ruby
     class User < ActiveRecord::Base
       include KrugForum::Extensions::User
+
+      # ...
     end
 

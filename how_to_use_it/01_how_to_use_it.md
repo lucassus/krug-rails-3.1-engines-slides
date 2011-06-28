@@ -1,4 +1,4 @@
-!SLIDE title
+!SLIDE title subsection
 # Jak użyć naszego engine? #
 
 !SLIDE small
@@ -7,15 +7,19 @@
 ## Gemfile
 
     @@@ ruby
+    # ...
     gem 'krug_forum',
       :git => 'git@github.com:lucassus/krug_forum.git'
+    # ...
 
 ## config/application.rb
 
     @@@ ruby
+    # ...
     require 'krug_forum'
+    # ...
 
-!SLIDE
+!SLIDE small
 # Podpięcie engine w routes #
 
 ## config/routes.rb
@@ -23,7 +27,11 @@
     @@@ ruby
     KrugForumDemo::Application.routes.draw do
       root :to => "index#index"
+
+      # nasz engine będzie dostępny pod adresem '/forum'
       mount KrugForum::Engine => "/forum"
+
+      # ...
     end
 
 !SLIDE bullets incremental

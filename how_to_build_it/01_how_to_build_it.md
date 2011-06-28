@@ -5,7 +5,7 @@
 # Instalacja Rails 3.1 #
 
     @@@ sh
-    gem isntall rails --pre
+    gem install rails --pre
 
 !SLIDE
 # Wygenerowanie projektu #
