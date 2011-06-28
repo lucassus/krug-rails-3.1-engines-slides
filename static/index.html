@@ -70,9 +70,9 @@
 </div>
 
 <div id="slides" class="offscreen" style="display:none;">
-<div class="slide" data-transition="none"><div class="content title" ref="intro/01_title">
+<div class="slide" data-transition="none"><div class="content title subsection" ref="intro/01_title">
 <h1>Engines w Rails 3.1</h1></div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="intro/02_about">
+</div><div class="slide" data-transition="none"><div class="content title small" ref="intro/02_about">
 <h1>O mnie</h1>
 
 <h2>&#x141;ukasz Bandzarewicz</h2>
@@ -81,22 +81,25 @@
 
 <h3>lukasz.bandzarewicz@gmail.com</h3>
 
-<h3>github.com/lucassus</h3>
+<h3>http://github.com/lucassus</h3>
 
 <h3>@lucassus</h3>
 
 <h3>http://blog.bandzarewicz.com</h3></div>
 </div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="intro/03_agenda">
-<h1>Agenda</h1>
+<h1>O czym bedzie prezentacja?</h1>
 
 <ul>
+<li>Odpowiemy sobie na nast&#x119;puj&#x105;ce pytania:</li>
 <li>Czym jest Rails engine?</li>
-<li>Jak zbudowa&#x107; engine?</li>
+<li>Jak zbudowa&#x107; i testowa&#x107; engine?</li>
 <li>Jak u&#x17C;y&#x107; engine?</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="what_is_an_engine/01_what_is_an_engine">
-<h1>Czym jest Rails engine?</h1>
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="what_is_an_engine/01_what_is_an_engine/1">
+<h1>Czym jest Rails engine?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="what_is_an_engine/01_what_is_an_engine/2">
+<h1>Engine to:</h1>
 
 <ul>
 <li>Aplikacja Rails w innej aplikacji Rails</li>
@@ -118,33 +121,31 @@
 <h1>Engines w Rails 3.1</h1>
 
 <ul>
-<li>engine jest teraz aplikacj&#x105; rack</li>
-<li>:isolate_namespace - engine mog&#x105; by&#x107; izolowane</li>
+<li>engines s&#x105; teraz aplikacj&#x105; rack</li>
+<li>:isolate_namespace - engines mog&#x105; by&#x107; izolowane</li>
 <li>posiadaj&#x105; w&#x142;asne routes</li>
 <li>mog&#x105; posiada&#x107; w&#x142;asne pluginy</li>
-<li>mo&#x17C;e serwowa&#x107; js i css</li>
+<li>mog&#x105; serwowa&#x107; js i css</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content small incremental" ref="how_to_build_it/01_how_to_build_it">
-<h1>Jak zbudowa&#x107; Rails 3.1 engine?</h1>
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/01_how_to_build_it/1">
+<h1>Jak zbudowa&#x107; Rails 3.1 engine?</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/01_how_to_build_it/2">
+<h1>Instalacja Rails 3.1</h1>
 
-<h2>Instalacja Rails 3.1</h2>
+<pre class="sh_sh"><code>gem isntall rails --pre</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/01_how_to_build_it/3">
+<h1>Wygenerowanie projektu</h1>
 
-<pre><code>gem isntall rails --pre
-</code></pre>
-
-<h2>Generowanie projektu</h2>
-
-<pre><code>rails plugin new krug_forum --mountable
-</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="how_to_build_it/02_directory_structure/1">
+<pre class="sh_sh"><code>rails plugin new krug_forum --mountable</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/02_directory_structure/1">
 <h1>Struktura katalog&#xF3;w</h1>
 
 <ul>
 <li>krug_forum.gemspec - pozwala na u&#x17C;ycie engine jako gema</li>
 <li>Gemfile - zostanie skonfigurowany tak by u&#x17C;ywac gemspeca</li>
 <li>config/routes.rb - routes enginu</li>
-<li>script/rails - server, generatory ipt.</li>
+<li>script/rails - serwer, generatory ipt.</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="how_to_build_it/02_directory_structure/2">
@@ -152,7 +153,7 @@
 
 <ul>
 <li>tak jak w standardowej aplikacji rails</li>
-<li>kontrolery, widoki, modele, helpery itp.</li>
+<li>mamy kontrolery, widoki, modele, helpery itp.</li>
 <li>..ale s&#x105; przestrzenie nazw</li>
 </ul>
 </div>
@@ -162,7 +163,7 @@
 <ul>
 <li>definiuje modu&#x142; KrugForum</li>
 <li>mo&#x17C;na tutaj umieszcza&#x107; helpery</li>
-<li>..np. konfiguracja engine</li>
+<li>..np. konfiguracja engine itp.</li>
 </ul>
 </div>
 </div><div class="slide" data-transition="none"><div class="content bullets" ref="how_to_build_it/02_directory_structure/4">
@@ -182,9 +183,10 @@
 <li>mini aplikacja Rails</li>
 <li>w zale&#x17C;no&#x15B;ciach ma nasz engine</li>
 <li>u&#x17C;ywana do uruchamiania test&#xF3;w</li>
+<li>..lub po prostu aplikacji <code>rails server</code></li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/03_tips_and_tricks">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental smaller" ref="how_to_build_it/03_tips_and_tricks">
 <h1>Tipsy i triki</h1>
 
 <ul>
@@ -193,11 +195,11 @@
 <li>Jak wygenerowa&#x107; prosty scaffold?</li>
 <li>Jak sprawi&#x107; by da&#x142;o si&#x119; testowa&#x107; routes?</li>
 <li>Jak dodawa&#x107; zale&#x17C;no&#x15B;ci?</li>
-<li>Jak doda&#x107; u&#x17C;ytkownik&#xF3;w?</li>
+<li>..np. jaki&#x15B; gem lub autentykacj&#x119; u&#x17C;ytkownik&#xF3;w</li>
 <li>Jak sprawi&#x107; by engine serwowa&#x142; pliki js i css?</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/04_rspec/1">
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/04_rspec/1">
 <h1>Instalowanie RSpec</h1></div>
 </div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/04_rspec/2">
 <h1>RSpec: dodanie zale&#x17C;no&#x15B;ci</h1>
@@ -215,7 +217,7 @@ end</code></pre>
 
 gem 'rails', '3.1.0.rc4'
 gem 'sqlite3'
-gem 'rake', '0.8.7'
+gem 'rake', '0.8.7' # wft? ale o tym p&#xF3;&#x17A;niej..
 
 gemspec</code></pre></div>
 </div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/3">
@@ -226,16 +228,41 @@ gemspec</code></pre></div>
 <h2>Przenie&#x15B;&#x107; test/dummy do spec/dumm</h2>
 
 <h2>Usun&#x105;&#x107; katalog test</h2></div>
-</div><div class="slide" data-transition="none"><div class="content bullets" ref="how_to_build_it/04_rspec/4">
-<h1>Ustawienie &#x15B;cie&#x17C;ek do spec/dummy</h1>
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/05_dummy/1">
+<h1>Ustawienie &#x15B;cie&#x17C;ek do spec/dummy</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/05_dummy/2">
+<h1>script/rails</h1>
 
-<ul>
-<li>script/rails</li>
-<li>Rakefile</li>
-<li>spec/spec_helper.rb</li>
-</ul>
-</div>
-</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/04_rspec/5">
+<pre class="sh_ruby"><code>#!/usr/bin/env ruby
+ENGINE_PATH = File.expand_path('../..',  __FILE__)
+load File.expand_path('../../spec/dummy/script/rails',  __FILE__)</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/05_dummy/3">
+<h1>Rakefile</h1>
+
+<pre class="sh_ruby"><code>#!/usr/bin/env rake
+require 'bundler/setup'
+
+APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
+
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
+task :default =&gt; :spec</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/05_dummy/4">
+<h1>spec/spec_helper.rb</h1>
+
+<pre class="sh_ruby"><code>ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../dummy/config/environment", __FILE__)
+require 'rspec/rails'
+
+# ...
+
+RSpec.configure do |config|
+  # ...
+end</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content title subsection" ref="how_to_build_it/06_generators/1">
+<h1>Konfigurowanie generator&#xF3;w engine</h1></div>
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/06_generators/2">
 <h1>Generatory w lib/krug_forum/engine.rb</h1>
 
 <pre class="sh_ruby"><code>module KrugForum
@@ -253,7 +280,7 @@ gemspec</code></pre></div>
     end
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/04_rspec/6">
+</div><div class="slide" data-transition="none"><div class="content smaller" ref="how_to_build_it/06_generators/3">
 <h1>Scaffold dla Topic</h1>
 
 <pre class="sh_sh"><code>rails g scaffold post subject:string body:test
@@ -284,7 +311,7 @@ end</code></pre></div>
       invoke  assets
       invoke    css
       invoke  css</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/04_rspec/7">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/06_generators/4">
 <h1>Poprawki po scaffold</h1>
 
 <ul>
@@ -294,7 +321,7 @@ end</code></pre></div>
 <li>nie dzia&#x142;aj&#x105; testy do kontroler&#xF3;w i routes</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/04_rspec/8">
+</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/06_generators/5">
 <h1>Testowanie routes</h1>
 
 <h2>spec/spec_helper.rb</h2>
@@ -313,7 +340,7 @@ if Rails.env.test?
     resources :posts
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/04_rspec/9">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/06_generators/6">
 <h1>Poprawki cd.</h1>
 
 <ul>
@@ -322,27 +349,27 @@ end</code></pre></div>
 <li><code>rake db:test:prepare</code></li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/10">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/06_generators/7">
 <h1>Wskrzeszenie rake</h1>
 
 <h2>Gemfile</h2>
 
 <pre class="sh_ruby"><code>gem 'rake', '0.8.7'</code></pre>
 
-<h2>U&#x17C;ycie</h2>
+<h2>Recepta na <code>rake db:test:prepare</code></h2>
 
 <pre class="sh_sh"><code>RAILS_ENV=test rake db:migrate</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/04_rspec/11">
+</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/07_gems/1">
 <h1>Dodawanie zale&#x17C;no&#x15B;ci</h1>
 
 <h2>(na przyk&#x142;adzie inherited_resources)</h2>
 
 <h2>https://github.com/josevalim/inherited_resources</h2></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/12">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/07_gems/2">
 <h1>krug_forum.gemspec</h1>
 
 <pre class="sh_ruby"><code>s.add_dependency "inherited_resources"</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/13">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/07_gems/3">
 <h1>app/controllers/krug_forum/posts_controller.rb</h1>
 
 <pre class="sh_ruby"><code>module KrugForum
@@ -350,7 +377,7 @@ end</code></pre></div>
     inherit_resources
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/04_rspec/14">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/07_gems/4">
 <h1>lib/krug_forum/engine.rb</h1>
 
 <pre class="sh_ruby"><code># musi si&#x119; tutaj znale&#x17A;&#x107; ka&#x17C;da zele&#x17A;no&#x15B;&#x107;,
@@ -362,23 +389,24 @@ module KrugForum
     isolate_namespace KrugForum
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/04_rspec/15">
+</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/07_gems/5">
 <h1>Jak doda&#x107; u&#x17C;ytkownik&#xF3;w?</h1>
 
 <h2>(na przyk&#x142;adzie devise)</h2>
 
 <h2>https://github.com/plataformatec/devise</h2></div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/04_rspec/16">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental small" ref="how_to_build_it/07_gems/6">
 <h1>Dodawanie u&#x17C;ytkownik&#xF3;w</h1>
 
 <ul>
 <li>do <strong>Gemfile</strong> doda&#x107; <code>gem 'devise'</code></li>
-<li>w katalogu <strong>spec/dummy</strong> wygenerowa&#x107; devise:</li>
+<li>zainstalowa&#x107; devise, w katalogu <strong>spec/dummy</strong>:</li>
 <li><code>rails generate devise:install</code></li>
 <li><code>rails generate devise User</code></li>
+<li>migracja w <strong>spec/dummy/db/migrate</strong></li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/17">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/07_gems/7">
 <h1>Rozszerzenie modelu</h1>
 
 <pre class="sh_ruby"><code># oczywi&#x15B;cie najpierw musi zosta&#x107;
@@ -388,7 +416,7 @@ module KrugForum
     belongs_to :user
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/18">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/07_gems/8">
 <h1>Rozszerzenie kontrolera</h1>
 
 <pre class="sh_ruby"><code>module KrugForum
@@ -403,13 +431,13 @@ end</code></pre></div>
     end
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/04_rspec/19">
+</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/07_gems/9">
 <h1>..ale co z</h1>
 
 <h1>User#has_many :posts</h1>
 
 <h1>???</h1></div>
-</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/04_rspec/20">
+</div><div class="slide" data-transition="none"><div class="content small" ref="how_to_build_it/07_gems/10">
 <h1>Mixin dla modelu User</h1>
 
 <h2>lib/krug_forum/extensions/user.rb</h2>
@@ -418,10 +446,10 @@ end</code></pre></div>
   module User
 
     def self.included(base)
-      base.send(:include, InstanceMethods)
-
       base.has_many :krug_forum_posts, 
         :class_name =&gt; 'KrugForum::Post'
+
+      base.send(:include, InstanceMethods)
     end
 
     module InstanceMethods
@@ -432,17 +460,19 @@ end</code></pre></div>
 
   end
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/21">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/07_gems/11">
 <h1>Mixin dla modelu User cd.</h1>
+
+<h2>spec/dummy/app/models/user.rb</h2>
 
 <pre class="sh_ruby"><code>class User &lt; ActiveRecord::Base
   include KrugForum::Extensions::User
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/04_rspec/22">
+</div><div class="slide" data-transition="none"><div class="content title" ref="how_to_build_it/08_static_assets/1">
 <h1>Serwowanie plik&#xF3;w js i css</h1>
 
 <h2>(na przyk&#x142;adzie jquery-rails)</h2></div>
-</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/04_rspec/23">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_build_it/08_static_assets/2">
 <h1>Instalacja zale&#x17C;no&#x15B;ci</h1>
 
 <ul>
@@ -450,7 +480,7 @@ end</code></pre></div>
 <li>..i nie zapomnie&#x107; o <code>require 'jquery-rails'</code> w lib/krug_forum/engine.rb</li>
 </ul>
 </div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/04_rspec/24">
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_build_it/08_static_assets/3">
 <h1>Podpi&#x119;cie assets w aplikacji</h1>
 
 <h2>app/assets/javascripts/krug_forum.js</h2>
@@ -483,18 +513,32 @@ end</code></pre></div>
   root :to =&gt; "index#index"
   mount KrugForum::Engine =&gt; "/forum"
 end</code></pre></div>
-</div><div class="slide" data-transition="none"><div class="content" ref="how_to_use_it/01_how_to_use_it/4">
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="how_to_use_it/01_how_to_use_it/4">
 <h1>Migracje</h1>
 
-<h2>Skopiowanie migracji do katalogu aplikacji</h2>
-
-<pre class="sh_sh"><code>rake my_forum:install:migrations</code></pre>
-
-<h2>..i oczywi&#x15B;cie ich uruchomienie</h2>
-
-<pre class="sh_sh"><code>rake db:migrate</code></pre></div>
+<ul>
+<li>Skopiowanie migracji do katalogu aplikacji</li>
+<li><code>rake my_forum:install:migrations</code></li>
+<li>..i oczywi&#x15B;cie ich uruchomienie</li>
+<li><code>rake db:migrate</code></li>
+</ul>
+</div>
 </div><div class="slide" data-transition="none"><div class="content title" ref="how_to_use_it/01_how_to_use_it/5">
-<h1>Pytania?</h1></div>
+<h1>Jak u&#x17C;ywa&#x107; helper&#xF3;w do routes</h1></div>
+</div><div class="slide" data-transition="none"><div class="content" ref="how_to_use_it/01_how_to_use_it/6">
+<h1>Hepery do routes</h1>
+
+<h2>W aplikacji u&#x17C;ywaj&#x105;cej engine</h2>
+
+<pre class="sh_html"><code>&lt;%= link_to 'Forum', krug_forum.root_path %&gt;</code></pre>
+
+<h2>W engine</h2>
+
+<pre class="sh_html"><code>&lt;%= link_to 'Home', main_app.root_path %&gt;</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content title" ref="outro/01_outro">
+<h1>Pytania?</h1>
+
+<h2>Zgni&#x142;e pomidory? ;)</h2></div>
 </div>
 </div>
 
