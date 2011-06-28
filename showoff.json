@@ -2,6 +2,9 @@
   "name": "Rails 3.1 Engines",
   "description": "Rails 3.1 Engines",
   "sections": [
-    {"section": "intro"}
+    {"section": "intro"},
+    {"section": "what_is_an_engine"},
+    {"section": "how_to_build_it"},
+    {"section": "how_to_use_it"}
   ]
 }
